@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="first">
+        <h1>To-Do List</h1>
+        <form action="#">
+          <input type="text" class="input" placeholder="Enter the title" />
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Enter the text"
+          >
+          </textarea>
+          <button class="Submit">Submit Me</button>
+        </form>
+      </div>
+
+      <!-- <div class="section-two">
+        <div class="box1">
+          <div class="remove">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </div>
+          <div class="pencil">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          </div>
+          <h1 class="list">Your List</h1>
+          <p class="para">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet
+            voluptatem nesciunt autem optio perspiciatis ratione tempora
+            praesentium at nisi tenetur quis recusandae vitae iure, possimus
+            sunt deleniti rerum natus amet?
+          </p>
+        </div> -->
+      <div class="section-two"></div>
+    </div>
+  </body>
+
+  <script>
+    // const submitbutton = document.querySelector(".Submit");
+    // const inputtitle = document.querySelector(".input");
+    // const text = document.querySelector("textarea");
+    // // const firstbox = document.querySelector(".box1");
+    // const pencil = document.querySelector(".pencil");
+    // const remove = document.querySelector(".remove");
+
+    // submitbutton.addEventListener("click", (asim) => {
+    //   asim.preventDefault();
+
+    //   document.querySelector(".list").textContent = inputtitle.value;
+    //   document.querySelector(".para").textContent = text.value;
+
+    //   inputtitle.value = "";
+    //   text.value = "";
+    // });
+
+    // //// editor for pencil
+
+    // pencil.addEventListener("click", () => {
+    //   inputtitle.value = document.querySelector(".list").textContent;
+    //   text.value = document.querySelector(".para").textContent;
+    // });
+    // remove.addEventListener("click", () => {
+    //   const box1 = document.querySelector(".box1");
+    //   box1.remove();
+    // });
+    //////////////////
+
+    const submitButton = document.querySelector(".Submit");
+    const inputTitle = document.querySelector(".input");
+    const inputText = document.querySelector("textarea");
+    const sectionTwo = document.querySelector(".section-two");
+
+    submitButton.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      const newBox = `
+    <div class="box1">
+      <div class="remove">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </div>
+      <div class="pencil">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      </div>
+      <h1 class="list">${inputTitle.value}</h1>
+      <p class="para">${inputText.value}</p>
+    </div>
+  `;
+
+      sectionTwo.insertAdjacentHTML("beforeend", newBox);
+
+      // Add event listeners for edit and remove buttons in the newly created box
+      const newBoxElement = sectionTwo.lastElementChild; ///
+      const removeButton = newBoxElement.querySelector(".remove"); /// the all new boxes we made javascipt will remove
+      const editButton = newBoxElement.querySelector(".pencil");
+
+      removeButton.addEventListener("click", () => {
+        newBoxElement.remove(); /// delete button pura box
+      });
+
+      editButton.addEventListener("click", () => {
+        inputTitle.value = newBoxElement.querySelector(".list").textContent;
+        inputText.value = newBoxElement.querySelector(".para").textContent;
+      });
+
+      // Clear input fields
+      inputTitle.value = ""; /// empty title
+      inputText.value = ""; /// empty paragraph
+    });
+
+    a = "ariba";
+    b = "arisha";
+  </script>
+</html>
